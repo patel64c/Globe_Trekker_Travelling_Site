@@ -1,0 +1,109 @@
+{% extends 'basic.html' %}
+{% block title %}View Packages - TravelMitra{% endblock %}
+{% block body %}
+{% load static %}
+    <!-- header ends -->
+
+    <!-- BreadCrumb Starts -->
+    <section class="breadcrumb-main pb-20 pt-14" style="background-image: url( {% static 'images/bg/bg1.jpg' %} );">
+        <div class="section-shape section-shape1 top-inherit bottom-0" style="background-image: url( {% static 'images/shape8.png' %} );"></div>
+        <div class="breadcrumb-outer">
+            <div class="container">
+                <div class="breadcrumb-content text-center">
+                    <h1 class="mb-3">Destination List</h1>
+                    <nav aria-label="breadcrumb" class="d-block">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"> Your Uploaded Packages</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="dot-overlay"></div>
+    </section>
+    <!-- BreadCrumb Ends -->
+
+    <!-- top Destination starts -->
+    <section class="trending pb-0 pt-6">
+        <div class="container">
+            <div class="section-title mb-6 w-50 mx-auto text-center">
+                <h2 class="mb-1">Your <span class="theme">Packages</span></h2>
+
+            </div>
+            <div class="row align-items-center">{% if items_page %}
+					{% for item in items_page %}
+                <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
+                    <div class="trend-item1">
+                        <div class="trend-image position-relative rounded">
+                            <img src="/media/{{item.package_image}}" alt="image">
+                            <div class="trend-content d-flex align-items-center justify-content-between position-absolute bottom-0 p-4 w-100 z-index">
+                                <div class="trend-content-title">
+                                    <h5 class="mb-0"><a href="/destinationdetailes/{{item.id}}" class="theme1">{{item.type_id.type_name}}</a></h5>
+                                    <h3 class="mb-0 white">{{item.package_name}}</h3>
+                                    <h5 class="mt-1"><a href="" class="theme1">Package Status: {{item.package_status}}</a></h5>
+                                </div>
+                            </div>
+                            <div class="color-overlay"></div>
+                        </div>
+                    </div>
+                    <a href="/deletepackage/{{item.id}}" class="btn btn-primary mt-2">Delete This Package</a> {% if item.status_button %} <a href="/closepackage/{{item.id}}" class="btn btn-primary mt-2 mx-2">Close this Package</a> {% else %} <a href="/reopenpackage/{{item.id}}" class="btn btn-primary mt-2">Reopen this Package</a> {% endif %}
+                </div>
+                {% endfor %}
+
+
+
+
+
+            </div>
+        </div>
+        <div class="row">
+					<div class="col-md-12 text-center">
+						<div class="block-27">
+
+    {% if items_page.has_other_pages %}
+    <div class="btn-group" role="group" aria-label="Item pagination">
+        {% if items_page.has_previous %}
+            <a href="?page={{ items_page.previous_page_number }}" class="btn btn-outline-primary">&laquo;</a>
+        {% endif %}
+
+        {% for page_number in items_page.paginator.page_range %}
+            {% if items_page.number == page_number %}
+                <button class="btn btn-outline-primary active">
+                    <span>{{ page_number }} <span class="sr-only">(current)</span></span>
+                </button>
+            {% else %}
+                <a href="?page={{ page_number }}" class="btn btn-outline-primary">
+                    {{ page_number }}
+                </a>
+            {% endif %}
+        {% endfor %}
+
+        {% if items_page.has_next %}
+            <a href="?page={{ items_page.next_page_number }}" class="btn btn-outline-primary">&raquo;</a>
+        {% endif %}
+    </div>
+    {% endif %}
+{% else %}
+    <p>No items found.</p>
+{% endif %}
+		            </div>
+					</div>
+				</div>
+    </section>
+    <!-- top Destination ends -->
+
+
+
+
+    <script src=" {% static 'js/jquery-3.5.1.min.js' %} "></script>
+    <script src=" {% static 'js/bootstrap.min.js' %} "></script>
+    <script src=" {% static 'js/particles.js' %} "></script>
+    <script src=" {% static 'js/particlerun.js' %} "></script>
+    <script src=" {% static 'js/plugin.js' %} "></script>
+    <script src=" {% static 'js/main.js' %} "></script>
+    <script src=" {% static 'js/custom-swiper.js' %} "></script>
+    <script src=" {% static 'js/custom-nav.js' %} "></script>
+
+    <!-- footer starts -->
+    {% endblock %}

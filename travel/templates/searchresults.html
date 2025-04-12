@@ -1,0 +1,76 @@
+{% extends 'basic.html' %}
+{% block title %}Search Result - TravelMitra{% endblock %}
+{% block body %}
+{% load static %}
+    <!-- header ends -->
+
+    <!-- BreadCrumb Starts -->
+    <section class="breadcrumb-main pb-20 pt-14" style="background-image: url( {% static 'images/bg/bg1.jpg' %} );">
+        <div class="section-shape section-shape1 top-inherit bottom-0" style="background-image: url( {% static 'images/shape8.png' %} );"></div>
+        <div class="breadcrumb-outer">
+            <div class="container">
+                <div class="breadcrumb-content text-center">
+                    <h1 class="mb-3">Search Result</h1>
+                    <nav aria-label="breadcrumb" class="d-block">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Search Result</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="dot-overlay"></div>
+    </section>
+    <!-- BreadCrumb Ends -->
+
+    <!-- top Destination starts -->
+    <section class="trending pb-0 pt-6">
+        <div class="container">
+            <div class="section-title mb-6 w-50 mx-auto text-center">
+                <h4 class="mb-1 theme1">Search Result</h4>
+                <h2 class="mb-1">Explore <span class="theme">Top Destinations</span></h2>
+                <p><b>"The world is a book, and those who do not travel read only a page." - Saint Augustine</b></p>
+            </div>
+            <div class="row align-items-center">
+					{% for s in search_data %}
+                <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
+                    <div class="trend-item1">
+                        <div class="trend-image position-relative rounded">
+                            <img src="/media/{{s.package_image}}" alt="image">
+                            <div class="trend-content d-flex align-items-center justify-content-between position-absolute bottom-0 p-4 w-100 z-index">
+                                <div class="trend-content-title">
+                                    <h5 class="mb-0"><a href="/destinationdetailes/{{s.id}}" class="theme1">{{s.type_id.type_name}}</a></h5>
+                                    <h3 class="mb-0 white">{{s.package_name}}</h3>
+                                    <h3 class="mb-0 white">{{s.package_price}} -rs</h3>
+
+                                </div>
+                            </div>
+                            <div class="color-overlay"></div>
+                        </div>
+                    </div>
+                </div>{% endfor %}
+
+
+
+
+
+            </div>
+        </div>
+
+    </section>
+    <!-- top Destination ends -->
+
+
+
+    <script src=" {% static 'js/jquery-3.5.1.min.js' %} "></script>
+    <script src=" {% static 'js/bootstrap.min.js' %} "></script>
+    <script src=" {% static 'js/particles.js' %} "></script>
+    <script src=" {% static 'js/particlerun.js' %} "></script>
+    <script src=" {% static 'js/plugin.js' %} "></script>
+    <script src=" {% static 'js/main.js' %} "></script>
+    <script src=" {% static 'js/custom-swiper.js' %} "></script>
+    <script src=" {% static 'js/custom-nav.js' %} "></script>
+
+    <!-- footer starts -->
+    {% endblock %}

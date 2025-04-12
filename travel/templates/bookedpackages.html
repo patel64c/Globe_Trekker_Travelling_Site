@@ -1,0 +1,38 @@
+{% extends 'basic.html' %}
+{% block title %}Your Bookings - TravelMitra{% endblock %}
+{% block body %}
+{% load static %}
+
+<div class="privacy py-5">
+		<div class="container py-md-5 py-4">
+			<div class="checkout-right">
+
+				<div class="table-responsive">
+					<table class="timetable_sub">
+						<thead>
+							<tr>
+								<th>SL No.</th>
+								<th>Package</th>
+								<th>Booking Status</th>
+								<th>Payment status</th>
+								<th>Date Time</th>
+							</tr>
+						</thead>
+						<tbody>{% for b in bookedpackagedata %}
+							<tr class="rem1">
+								<td class="invert">{{forloop.counter}}</td>
+								<td class="invert">{{b.package_data.package_name}}  |  <a href="/destinationdetailes/{{b.package_data.id}}" class="mx-2">View Package</a></td>
+								<td class="invert">{{b.booking_status}}  | <a href="/cancel/{{ b.package_data.id }}" class="mx-2">Cancel Booking</a> </td>
+								<td class="invert">{{b.booking_status}}</td>
+								<td class="invert">{{b.payment_status}}</td>
+								<td class="invert">{{b.datetime}}</td>
+							</tr>{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+{% endblock %}

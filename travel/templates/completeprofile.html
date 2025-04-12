@@ -1,0 +1,114 @@
+{% extends 'basic.html' %}
+{% block title %}Complete Your Profile - TravelMitra{% endblock %}
+{% block body %}
+{% load static %}
+    <!-- header ends -->
+
+    <!-- BreadCrumb Starts -->
+    <section class="breadcrumb-main pb-20 pt-14" style="background-image: url( {% static 'images/bg/bg1.jpg' %} );">
+        <div class="section-shape section-shape1 top-inherit bottom-0" style="background-image: url( {% static 'images/shape8.png' %} );"></div>
+        <div class="breadcrumb-outer">
+            <div class="container">
+                <div class="breadcrumb-content text-center">
+                    <h1 class="mb-3">Complete Profiles</h1>
+                    <nav aria-label="breadcrumb" class="d-block">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Add details</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="dot-overlay"></div>
+    </section>
+    <!-- BreadCrumb Ends -->
+
+    <!-- contact starts -->
+    <section class="contact-main pt-6 pb-60">
+        <div class="container">
+            <div class="contact-info-main mt-0">
+                <div class="row">
+                    <div class="col-lg-10 col-offset-lg-1 mx-auto">
+                        <div class="contact-info bg-white">
+                            <div class="contact-info-title text-center mb-4 px-5">
+                                <h3 class="mb-1">Complete Your Profile</h3>
+                            </div>
+
+                            <div id="contact-form1" class="contact-form">
+                                <div class="row">
+                                    <div class="col-lg-3">
+
+                                    </div>
+                                    <div class="col-lg-6">
+
+                                        <div id="contactform-error-msg"></div>
+                                        <form method="post" action="/completeprofilesubmit" name="contactform2" id="my_form" enctype="multipart/form-data">{% csrf_token %}
+                                            <div class="form-group mb-2">
+                                                <label for="name">Name:</label>
+                                                <input type="text" name="name" class="form-control" id="name" placeholder="Name">
+                                            </div>
+                                            <div class="form-group mb-2">
+                                                <label for="date">DOB:</label>
+                                                <input type="date" name="date"  class="form-control" id="date" placeholder="Date of Birth">
+                                            </div>
+                                            <div class="form-group mb-2">
+                                                <label for="dp">Upload Profile Picture:</label>
+                                                <input type="file" name="dp" id="dp" class="form-control">
+						                    </div>
+                                            <div class="form-group mb-2">
+                                               <label>Choose a City:</label>
+                                                    <select id="cityname" name="cityname">
+                                                        {% for city in citydetail %}
+                                                      <option value="{{city.id}}">{{city.city_name}}</option>
+                                                    {% endfor %}
+                                                    </select>
+                                            </div>
+
+                                            <div class="form-group mb-2">
+                                               <label>Choose a State:</label>
+                                                    <select id="statename" name="statename">
+                                                        {% for s in statedetail %}
+                                                      <option value="{{s.id}}">{{s.state_name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                            </div>
+                                            <div class="form-group mb-2">
+                                                   <label>Choose a Country:</label>
+                                                        <select  id="countryname" name="countryname">
+                                                            {% for co in countrydetail %}
+                                                          <option value="{{co.id}}">{{co.country_name}}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                            </div>
+                                            <div class="textarea mb-2">
+                                                <label>Enter your Address:</label>
+                                                <textarea name="address" placeholder="Enter your Address"></textarea>
+                                            </div>
+                                            <div class="comment-btn mb-2 pb-2 text-center border-b">
+                                                <a href="javascript:{}" class="nir-btn white" onclick="document.getElementById('my_form').submit();">submit</a>
+<!--                                                  <a role=" {% static 'booking.html' %} " class="nir-btn white">Book Now</a>-->
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- contact Ends -->
+
+    <script src=" {% static 'js/jquery-3.5.1.min.js' %} "></script>
+    <script src=" {% static 'js/bootstrap.min.js' %} "></script>
+    <script src=" {% static 'js/particles.js' %} "></script>
+    <script src=" {% static 'js/particlerun.js' %} "></script>
+    <script src=" {% static 'js/plugin.js' %} "></script>
+    <script src=" {% static 'js/main.js' %} "></script>
+    <script src=" {% static 'js/custom-swiper.js' %} "></script>
+    <script src=" {% static 'js/custom-nav.js' %} "></script>
+
+
+{% endblock %}

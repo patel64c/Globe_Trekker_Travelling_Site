@@ -1,0 +1,121 @@
+{% extends 'basic.html' %}
+{% block title %}Add Package - TravelMitra{% endblock %}
+{% block body %}
+{% load static %}
+    <!-- header ends -->
+
+    <!-- BreadCrumb Starts -->  
+    <section class="breadcrumb-main pb-20 pt-14" style="background-image: url( {% static 'images/bg/bg1.jpg' %} );">
+        <div class="section-shape section-shape1 top-inherit bottom-0" style="background-image: url( {% static 'images/shape8.png' %} );"></div>
+        <div class="breadcrumb-outer">
+            <div class="container">
+                <div class="breadcrumb-content text-center">
+                    <h1 class="mb-3">Add Package</h1>
+                    <nav aria-label="breadcrumb" class="d-block">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Add Package</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="dot-overlay"></div>
+    </section>
+    <!-- BreadCrumb Ends --> 
+
+    <section class="contact-main pt-6 pb-60">
+        <div class="container">
+            <div class="contact-info-main mt-0">
+                <div class="row">
+                    <div class="col-lg-10 col-offset-lg-1 mx-auto">
+                        <div class="contact-info bg-white">
+                            <div class="contact-info-title text-center mb-4 px-5">
+                                <h3 class="mb-1">Add Package</h3>
+                            </div>
+
+                            <div id="contact-form1" class="contact-form">
+                                <div class="row">
+                                    <div class="col-lg-3">
+
+                                    </div>
+                                    <div class="col-lg-6">
+
+                                        <div id="contactform-error-msg"></div>
+                                        <form method="post" action="/addpackagesubmit" name="contactform3" id="my_form" enctype="multipart/form-data">{% csrf_token %}
+                                            <div class="form-group mb-2">
+                                                <label for="name">Package Name:</label>
+                                                <input type="text" name="name" class="form-control" id="name" placeholder="Name">
+                                            </div>
+                                            <div class="form-group mb-2">
+                                               <label>Choose Package Type:</label>
+                                                    <select id="type" name="type">
+                                                        {% for type in package_type %}
+                                                      <option value="{{type.id}}">{{type.type_name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                            </div>
+                                            <div class="form-group mb-2">
+                                               <label>Choose Package Status:</label>
+                                                    <select id="status" name="status">
+                                                      <option value="open">Open</option>
+                                                      <option value="closed">Closed</option>
+                                                    </select>
+                                            </div>
+                                            <div class="form-group mb-2">
+                                                <label for="days">No.of Days:</label>
+                                                <input type="tel" name="days" class="form-control" id="days" placeholder="No. Of Days">
+                                            </div>
+                                            <div class="form-group mb-2">
+                                                <label for="dp">Upload Package Picture:</label>
+                                                <input type="file" name="dp" id="dp" class="form-control">
+						                    </div>
+                                            <div class="form-group mb-2">
+                                                <label for="days">Package Price:</label>
+                                                <input type="tel" name="price" class="form-control" id="price" placeholder="Package Price">
+                                            </div>
+
+                                            <div class="textarea mb-2">
+                                                <label>Package Description:</label>
+                                                <textarea name="description" placeholder="Enter Package Description"></textarea>
+                                            </div>
+                                            <div class="comment-btn mb-2 pb-2 text-center border-b">
+                                                <a href="javascript:{}" class="nir-btn white" onclick="document.getElementById('my_form').submit();">submit</a>
+<!--                                                  <a role=" {% static 'booking.html' %} " class="nir-btn white">Book Now</a>-->
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- contact Ends -->
+
+    <!-- contact Ends -->
+    <script src=" {% static 'js/jquery-3.5.1.min.js' %} "></script>
+    <script src=" {% static 'js/bootstrap.min.js' %} "></script>
+    <script src=" {% static 'js/particles.js' %} "></script>
+    <script src=" {% static 'js/particlerun.js' %} "></script>
+    <script src=" {% static 'js/plugin.js' %} "></script>
+    <script src=" {% static 'js/main.js' %} "></script>
+    <script src=" {% static 'js/custom-swiper.js' %} "></script>
+    <script src=" {% static 'js/custom-nav.js' %} "></script>
+
+     <script
+  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+  crossorigin="anonymous"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+  crossorigin="anonymous"></script>
+<script
+  src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+  crossorigin="anonymous"></script>
+
+{% endblock %}
